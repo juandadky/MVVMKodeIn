@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.dadky.mvvmkoin.ui.auth.AuthViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E2E2E2"
+        tools:context=".ui.auth.SignUpActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/image_view_logo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="45dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_app_logo"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/image_view_logo">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Construye tu app con"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:fontFamily="cursive"
+                    android:textColor="#465A61"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="MVVM"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                    app:fontFamily="casual"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:typeface="monospace"
+                    android:textColor="#969EEE"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout1"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="18dp">
+
+                <EditText
+                    android:text="@={viewmodel.name}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Nombre y apellido"
+                    android:inputType="textPersonName"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:background="@drawable/edit_text_round_gray_background"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    />
+
+                <EditText
+                    android:text="@={viewmodel.email}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="ejemplo@gmail.com"
+                    android:inputType="textEmailAddress"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:background="@drawable/edit_text_round_gray_background"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    />
+
+                <EditText
+                    android:text="@={viewmodel.password}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:background="@drawable/edit_text_round_gray_background"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    />
+
+                <EditText
+                    android:text="@={viewmodel.passwordConfirm}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Confirma la contraseña"
+                    android:inputType="textPassword"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:background="@drawable/edit_text_round_gray_background"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="¿Olvidaste tu contraseña?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                <Button
+                    android:onClick="@{viewmodel::onSignupButtonClick}"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Registrate" />
+
+            </LinearLayout>
+
+            <TextView
+                android:onClick="@{viewmodel::onLogin}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_below="@id/linearLayout2"
+                android:textAlignment="center"
+                android:text="¿Ya tienes cuenta?\nInicia sesión aqui"/>
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
